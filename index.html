@@ -633,6 +633,73 @@
             font-size: 0.95rem;
             color: #555;
         }
+        
+        /* Publication Details */
+        .pub-details {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid #eee;
+        }
+        
+        .pub-details h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .pub-contents {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .pub-contents li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .pub-contents li:last-child {
+            border-bottom: none;
+        }
+        
+        .pub-contents .title {
+            font-weight: 500;
+        }
+        
+        .pub-contents .author {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .pub-contents .pages {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .view-more {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .view-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-more-btn:hover {
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -779,6 +846,7 @@
                     </a>
                 </div>
 
+                <!-- Updated October 1973 Publication Card -->
                 <div class="publication-card">
                     <div class="pub-icon">
                         <i class="fas fa-newspaper"></i>
@@ -786,8 +854,40 @@
                     <h3 class="pub-title">OPINION Journal - October 1973</h3>
                     <div class="pub-meta">Vol. XIV No. 27 | 30th October 1973</div>
                     <p class="pub-description">Features Gorwala's critical analysis "The Hangman's Rope" along with other political commentaries and literary pieces.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
-                        <i class="fas fa-external-link-alt"></i> Access Issue
+                    
+                    <div class="pub-details">
+                        <h4>Featured Contents:</h4>
+                        <ul class="pub-contents">
+                            <li>
+                                <span class="title">The Hangman's Rope</span>
+                                <span class="pages">3-6</span>
+                            </li>
+                            <li>
+                                <span class="title">Old Cattle</span>
+                                <span class="author">Kamala Das</span>
+                                <span class="pages">7</span>
+                            </li>
+                            <li>
+                                <span class="title">Forest-Dreams</span>
+                                <span class="author">K.N. Daruwala</span>
+                                <span class="pages">7-8</span>
+                            </li>
+                            <li>
+                                <span class="title">Grave Injustice</span>
+                                <span class="author">M.M. Dave</span>
+                                <span class="pages">10-12</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="view-more">
+                            <button class="view-more-btn" onclick="showPublicationModal()">
+                                View all contents <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a href="https://csciitd-my.sharepoint.com/:b:/r/personal/burra_iitd_ac_in/Documents/1working%20on/gorwala%20scans/vol14_no27.pdf?csf=1&web=1&e=SRzg5t" target="_blank" class="pub-btn">
+                        <i class="fas fa-external-link-alt"></i> View Document
                     </a>
                 </div>
 
@@ -815,6 +915,19 @@
                     </a>
                 </div>
 
+
+
+                 <div class="publication-card">
+                    <div class="pub-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="pub-title">The Role of the Administrator</h3>
+                    <div class="pub-meta">Published 1952 | Administrative Guide</div>
+                    <p class="pub-description">Gorwala's seminal work on ethical governance and the responsibilities of civil servants.</p>
+                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
+                        <i class="fas fa-external-link-alt"></i> View Document
+                    </a>
+                </div>               
                 <div class="publication-card">
                     <div class="pub-icon">
                         <i class="fas fa-journal-whills"></i>
@@ -828,6 +941,79 @@
                 </div>
             </div>
         </section>
+    </div>
+    
+    <!-- Publication Modal -->
+    <div class="publication-modal" id="publicationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>OPINION Journal - October 1973</h3>
+                <button class="close-btn" onclick="closePublicationModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pub-meta">Vol. XIV No. 27 | 30th October 1973</div>
+                
+                <h4>Complete Table of Contents</h4>
+                <ul class="pub-contents">
+                    <li>
+                        <span class="title">The Hangman's Rope</span>
+                        <span class="pages">3-6</span>
+                    </li>
+                    <li>
+                        <span class="title">Old Cattle</span>
+                        <span class="author">Kamala Das</span>
+                        <span class="pages">7</span>
+                    </li>
+                    <li>
+                        <span class="title">Forest-Dreams</span>
+                        <span class="author">K.N. Daruwala</span>
+                        <span class="pages">7-8</span>
+                    </li>
+                    <li>
+                        <span class="title">Grave Injustice</span>
+                        <span class="author">M.M. Dave</span>
+                        <span class="pages">10-12</span>
+                    </li>
+                    <li>
+                        <span class="title">Landscapes</span>
+                        <span class="author">Gauri Deshpande</span>
+                        <span class="pages">13-15</span>
+                    </li>
+                    <li>
+                        <span class="title">The Yakir-Krasin Trial and Socialist Legality</span>
+                        <span class="author">A.G. Noorani</span>
+                        <span class="pages">16-23</span>
+                    </li>
+                    <li>
+                        <span class="title">The Idiocy of Bandhs</span>
+                        <span class="author">D.D. Karve</span>
+                        <span class="pages">24-25</span>
+                    </li>
+                    <li>
+                        <span class="title">People</span>
+                        <span class="author">Diana Zinkin</span>
+                        <span class="pages">25</span>
+                    </li>
+                    <li>
+                        <span class="title">The French Communist Dilemma</span>
+                        <span class="pages">27-29,12</span>
+                    </li>
+                    <li>
+                        <span class="title">The Public Voice</span>
+                        <span class="pages">30-32</span>
+                    </li>
+                </ul>
+                
+                <div class="pdf-preview">
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="pdf-title">OPINION Journal - October 1973</div>
+                    <p>Full PDF version of this publication</p>
+                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open PDF
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- Footer -->
@@ -917,6 +1103,23 @@
             const searchContainer = document.querySelector('.search-container');
             if (!searchContainer.contains(e.target)) {
                 document.getElementById('searchResults').style.display = 'none';
+            }
+        });
+        
+        // Publication modal functions
+        function showPublicationModal() {
+            document.getElementById('publicationModal').style.display = 'flex';
+        }
+        
+        function closePublicationModal() {
+            document.getElementById('publicationModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('publicationModal');
+            if (event.target === modal) {
+                closePublicationModal();
             }
         });
     </script>
