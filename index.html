@@ -21,6 +21,7 @@
             --dark: #0d1f22;
             --text: #333333;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
         
         body {
@@ -115,7 +116,7 @@
             padding: 0 25px;
             border-radius: 0 30px 30px 0;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             font-size: 1.1rem;
             box-shadow: var(--shadow);
         }
@@ -232,7 +233,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
@@ -264,7 +265,7 @@
             text-decoration: none;
             font-weight: 500;
             display: inline-block;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .link-content a:hover {
@@ -362,7 +363,7 @@
             margin-top: 10px;
             max-height: 300px;
             overflow-y: auto;
-            color: #333; /* Set text color to dark */
+            color: #333;
             border: 1px solid #e0e0e0;
         }
         
@@ -376,7 +377,7 @@
             padding: 12px 15px;
             border-bottom: 1px solid #eee;
             cursor: pointer;
-            color: #333; /* Explicitly set text color */
+            color: #333;
             display: flex;
             align-items: center;
             transition: all 0.2s ease;
@@ -428,7 +429,7 @@
             font-weight: 500;
             margin-top: 15px;
             border: 1px solid #cce0ff;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .wiki-link:hover {
@@ -528,7 +529,7 @@
             font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -570,7 +571,7 @@
             background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
             border-radius: 10px;
             padding: 20px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
@@ -616,7 +617,7 @@
             border-radius: 30px;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             text-align: center;
             margin-top: auto;
             text-decoration: none;
@@ -694,11 +695,200 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .view-more-btn:hover {
             color: var(--primary);
+        }
+        
+        /* API status indicator */
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            top: -30px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .api-status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .api-status-online {
+            background-color: #4CAF50;
+        }
+        
+        .api-status-offline {
+            background-color: #f44336;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Highlighting search matches */
+        .search-match {
+            background-color: rgba(212, 180, 131, 0.3);
+            padding: 2px;
+            border-radius: 3px;
+        }
+        
+        /* Archive Table Styles */
+        .archive-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        th:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        th i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        tbody tr:hover {
+            background-color: #f8f9ff;
+        }
+        
+        td {
+            padding: 12px 15px;
+            font-size: 0.95rem;
+        }
+        
+        .volume {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .issue {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .author {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter select:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .pagination button {
+            padding: 10px 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .pagination button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pagination button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
     </style>
 </head>
@@ -715,8 +905,12 @@
                 </div>
                 
                 <div class="search-container">
+                    <div class="api-status">
+                        <span class="api-status-indicator api-status-online" id="apiStatus"></span>
+                        <span>Search API: <span id="apiStatusText">Online</span></span>
+                    </div>
                     <div class="search-bar">
-                        <input type="text" id="searchInput" placeholder="Search this site...">
+                        <input type="text" id="searchInput" placeholder="Search all content...">
                         <button class="search-btn"><i class="fas fa-search"></i></button>
                     </div>
                     <div class="search-results" id="searchResults">
@@ -829,7 +1023,7 @@
                     <h3 class="pub-title">OPINION Journal - December 1971</h3>
                     <div class="pub-meta">Vol. XII No. 35 | 28th December 1971</div>
                     <p class="pub-description">This issue contains Gorwala's political commentary on contemporary issues, including the Bangladesh Liberation War and its aftermath.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
+                    <a href="#" target="_blank" class="pub-btn">
                         <i class="fas fa-external-link-alt"></i> View Publication
                     </a>
                 </div>
@@ -841,7 +1035,7 @@
                     <h3 class="pub-title">The Queen of Beauty and Other Tales</h3>
                     <div class="pub-meta">Published 1973 | ISBN: N/A</div>
                     <p class="pub-description">A collection of Gorwala's literary works blending administrative wisdom with storytelling, praised as a "literary gem" by critics.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
+                    <a href="#" target="_blank" class="pub-btn">
                         <i class="fas fa-external-link-alt"></i> Read Online
                     </a>
                 </div>
@@ -886,7 +1080,7 @@
                         </div>
                     </div>
                     
-                    <a href="https://csciitd-my.sharepoint.com/:b:/r/personal/burra_iitd_ac_in/Documents/1working%20on/gorwala%20scans/vol14_no27.pdf?csf=1&web=1&e=SRzg5t" target="_blank" class="pub-btn">
+                    <a href="#" target="_blank" class="pub-btn">
                         <i class="fas fa-external-link-alt"></i> View Document
                     </a>
                 </div>
@@ -898,7 +1092,7 @@
                     <h3 class="pub-title">Report on Public Administration</h3>
                     <div class="pub-meta">Published 1951 | Government Report</div>
                     <p class="pub-description">Gorwala's influential report that shaped post-independence administrative reforms in India.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
+                    <a href="#" target="_blank" class="pub-btn">
                         <i class="fas fa-external-link-alt"></i> Download PDF
                     </a>
                 </div>
@@ -910,24 +1104,11 @@
                     <h3 class="pub-title">The Role of the Administrator</h3>
                     <div class="pub-meta">Published 1952 | Administrative Guide</div>
                     <p class="pub-description">Gorwala's seminal work on ethical governance and the responsibilities of civil servants.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
+                    <a href="#" target="_blank" class="pub-btn">
                         <i class="fas fa-external-link-alt"></i> View Document
                     </a>
                 </div>
-
-
-
-                 <div class="publication-card">
-                    <div class="pub-icon">
-                        <i class="fas fa-scroll"></i>
-                    </div>
-                    <h3 class="pub-title">The Role of the Administrator</h3>
-                    <div class="pub-meta">Published 1952 | Administrative Guide</div>
-                    <p class="pub-description">Gorwala's seminal work on ethical governance and the responsibilities of civil servants.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
-                        <i class="fas fa-external-link-alt"></i> View Document
-                    </a>
-                </div>               
+                
                 <div class="publication-card">
                     <div class="pub-icon">
                         <i class="fas fa-journal-whills"></i>
@@ -935,10 +1116,78 @@
                     <h3 class="pub-title">OPINION Journal - September 1967</h3>
                     <div class="pub-meta">Vol. VIII No. 21 | 26th September 1967</div>
                     <p class="pub-description">Early issue featuring Gorwala's commentary on Indian politics and society during a turbulent period.</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="pub-btn">
+                    <a href="#" target="_blank" class="pub-btn">
                         <i class="fas fa-external-link-alt"></i> Read Now
                     </a>
                 </div>
+            </div>
+        </section>
+        
+        <!-- Archive Section -->
+        <section class="archive-section">
+            <h2 class="section-title">OPINION Journal Archive (1960-1965)</h2>
+            <p>Comprehensive archive of Opinion articles featuring political analysis, international affairs, and social commentary</p>
+            
+            <div class="controls">
+                <div class="filter">
+                    <select id="volumeFilter">
+                        <option value="">All Volumes</option>
+                        <option value="I">Volume I</option>
+                        <option value="II">Volume II</option>
+                        <option value="III">Volume III</option>
+                        <option value="IV">Volume IV</option>
+                        <option value="V">Volume V</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <select id="yearFilter">
+                        <option value="">All Years</option>
+                        <option value="1960">1960</option>
+                        <option value="1961">1961</option>
+                        <option value="1962">1962</option>
+                        <option value="1963">1963</option>
+                        <option value="1964">1964</option>
+                        <option value="1965">1965</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <select id="authorFilter">
+                        <option value="">All Authors</option>
+                        <option value="A.D. Gorwala">A.D. Gorwala</option>
+                        <option value="Vivek">Vivek</option>
+                        <option value="Jan Sevak">Jan Sevak</option>
+                        <option value="Taya Zinkin">Taya Zinkin</option>
+                        <option value="S.G. Vaze">S.G. Vaze</option>
+                        <option value="S. Natarajan">S. Natarajan</option>
+                        <option value="A.G. Noorani">A.G. Noorani</option>
+                        <option value="D.D. Karve">D.D. Karve</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table id="contentTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Volume <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(1)">Issue <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(2)">Year <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(3)">Date <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(4)">Article <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(5)">Author <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(6)">Pages <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Table rows will be generated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination">
+                <button id="prevBtn" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                <span id="pageInfo" style="padding: 10px 18px; font-weight:500">Page 1 of 5</span>
+                <button id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
     </div>
@@ -1008,7 +1257,7 @@
                     <i class="fas fa-file-pdf"></i>
                     <div class="pdf-title">OPINION Journal - October 1973</div>
                     <p>Full PDF version of this publication</p>
-                    <a href="https://csciitd-my.sharepoint.com/:b:/g/personal/burra_iitd_ac_in/EcbNrSNe7DRCv_XmeVMpDTUBfBX9H_Kp-2208Uzc_SOrCA?e=Tt9LAi" target="_blank" class="open-btn">
+                    <a href="#" target="_blank" class="open-btn">
                         <i class="fas fa-external-link-alt"></i> Open PDF
                     </a>
                 </div>
@@ -1022,88 +1271,171 @@
     </footer>
     
     <script>
-        // Search functionality
-        document.querySelector('.search-btn').addEventListener('click', function() {
-            performSearch();
-        });
-        
-        // Handle Enter key in search
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-        
-        // Search functionality implementation
-        function performSearch() {
+        // Sample data for the table (in a real implementation, this would come from a database)
+        const journalData = [
+            {volume: "I", issue: "1", year: "1960", date: "17.05.1960", article: "The Cost of Shri Nehru", author: "A.D. Gorwala", pages: "1-4"},
+            {volume: "I", issue: "2", year: "1960", date: "24.05.1960", article: "The Summit Failure", author: "A.D. Gorwala", pages: "1-4"},
+            {volume: "I", issue: "4", year: "1960", date: "07.06.1960", article: "Could it Happen Here?", author: "A.D. Gorwala", pages: "1-3"},
+            {volume: "I", issue: "4", year: "1960", date: "07.06.1960", article: "Asatyameva Jayate?", author: "Vivek", pages: "4"},
+            {volume: "I", issue: "7", year: "1960", date: "28.06.1960", article: "The Congress Today", author: "A.D. Gorwala", pages: "1-4"},
+            {volume: "I", issue: "8", year: "1960", date: "05.07.1960", article: "Awkward Guests", author: "A.D. Gorwala", pages: "1-3"},
+            {volume: "I", issue: "8", year: "1960", date: "05.07.1960", article: "Note from London", author: "", pages: "4"},
+            {volume: "I", issue: "9", year: "1960", date: "12.07.1960", article: "Of Berlin, West and East", author: "Vivek", pages: "1-3"},
+            {volume: "I", issue: "9", year: "1960", date: "12.07.1960", article: "Denigrators of Democracy", author: "A.D. Gorwala", pages: "3-4"},
+            {volume: "I", issue: "10", year: "1960", date: "19.07.1960", article: "The Recent Strike", author: "A.D. Gorwala", pages: "1-4"},
+            {volume: "I", issue: "11", year: "1960", date: "26.07.1960", article: "The Congo Imbroglio", author: "Jan Sevak", pages: "1-4"},
+            {volume: "I", issue: "12", year: "1960", date: "02.08.1960", article: "Soviet-Indo Friendship?", author: "A.D. Gorwala", pages: "1-3"},
+            {volume: "I", issue: "12", year: "1960", date: "02.08.1960", article: "The Indian-Descended Ceylonese", author: "Vivek", pages: "3-4"},
+            {volume: "I", issue: "13", year: "1960", date: "09.08.1960", article: "Of Linguistic States and Hindi", author: "A.D. Gorwala", pages: "1-2"},
+            {volume: "I", issue: "13", year: "1960", date: "09.08.1960", article: "The Expulsion of A Correspondent", author: "Vivek", pages: "2-4"},
+            {volume: "I", issue: "14", year: "1960", date: "16.08.1960", article: "August 15, 1960", author: "A.D. Gorwala", pages: "1-4"},
+            {volume: "I", issue: "15", year: "1960", date: "23.08.1960", article: "Reflections of the Third Plan", author: "Vivek", pages: "1-4"},
+            {volume: "I", issue: "16", year: "1960", date: "30.08.1960", article: "The Palai Bank Case", author: "A.D. Gorwala", pages: "1-3"},
+            {volume: "I", issue: "16", year: "1960", date: "30.08.1960", article: "Some Aspects of Bombay", author: "Jan Sevak", pages: "3-4"},
+            {volume: "I", issue: "16", year: "1960", date: "30.08.1960", article: "The Tiger's Moustaches", author: "Vivek", pages: "4"},
+            {volume: "II", issue: "2", year: "1961", date: "23.05.1961", article: "Some Communist Wiles", author: "", pages: "1-4"},
+            {volume: "II", issue: "3", year: "1961", date: "30.05.1961", article: "Pakistan India And Kashmir", author: "", pages: "1-3"},
+            {volume: "II", issue: "3", year: "1961", date: "30.05.1961", article: "Control of Industry", author: "", pages: "4"},
+            {volume: "II", issue: "12", year: "1961", date: "01.08.1961", article: "New Frontiers of Foreign Aid", author: "Vera Micheles Dean", pages: "1-6"},
+            {volume: "II", issue: "12", year: "1961", date: "01.08.1961", article: "The British Crisis", author: "Taya Zinkin", pages: "7-8"},
+            {volume: "II", issue: "12", year: "1961", date: "01.08.1961", article: "Detention Without Trial", author: "V.G. Vaze", pages: "9-10"},
+            {volume: "III", issue: "3", year: "1962", date: "29.05.1962", article: "That Picture and This!", author: "Taya Zinkin", pages: "1-2"},
+            {volume: "III", issue: "3", year: "1962", date: "29.05.1962", article: "The News The Whole News", author: "", pages: "3"},
+            {volume: "IV", issue: "3", year: "1963", date: "28.05.1963", article: "Kashmir", author: "", pages: "1-3"},
+            {volume: "IV", issue: "3", year: "1963", date: "28.05.1963", article: "Development: Some International Aspects", author: "B.K. Madan", pages: "3-5"},
+            {volume: "V", issue: "4", year: "1964", date: "02.06.1964", article: "Jawaharlal Nehru", author: "", pages: "1-2"},
+            {volume: "V", issue: "4", year: "1964", date: "02.06.1964", article: "Failure to integrate", author: "D.D Karve", pages: "2-4"}
+        ];
+
+        // Variables for pagination and filtering
+        const rowsPerPage = 10;
+        let currentPage = 1;
+        let filteredData = [...journalData];
+        let sortColumn = null;
+        let sortDirection = 1; // 1 for ascending, -1 for descending
+
+        // Function to generate table rows
+        function generateTableRows(data) {
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const endIndex = startIndex + rowsPerPage;
+            const pageData = data.slice(startIndex, endIndex);
+            
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            
+            pageData.forEach(item => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td class="volume">${item.volume}</td>
+                    <td class="issue">${item.issue}</td>
+                    <td class="year">${item.year}</td>
+                    <td class="date">${item.date}</td>
+                    <td class="article">${item.article}</td>
+                    <td class="author">${item.author || 'Various'}</td>
+                    <td class="pages">${item.pages}</td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Update pagination info
+            document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${Math.ceil(data.length / rowsPerPage)}`;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === Math.ceil(data.length / rowsPerPage);
+        }
+
+        // Function to apply filters
+        function applyFilters() {
+            const volumeFilter = document.getElementById('volumeFilter').value;
+            const yearFilter = document.getElementById('yearFilter').value;
+            const authorFilter = document.getElementById('authorFilter').value;
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const resultsContainer = document.getElementById('searchResults');
-            const resultsList = resultsContainer.querySelector('ul');
             
-            if (searchTerm.trim() === '') {
-                resultsContainer.style.display = 'none';
-                return;
-            }
+            filteredData = journalData.filter(item => {
+                const matchesVolume = !volumeFilter || item.volume === volumeFilter;
+                const matchesYear = !yearFilter || item.year === yearFilter;
+                const matchesAuthor = !authorFilter || (item.author && item.author.includes(authorFilter));
+                const matchesSearch = !searchTerm || 
+                    item.article.toLowerCase().includes(searchTerm) || 
+                    (item.author && item.author.toLowerCase().includes(searchTerm));
+                
+                return matchesVolume && matchesYear && matchesAuthor && matchesSearch;
+            });
             
-            // Sample searchable content
-            const searchContent = [
-                {title: "Biography", content: "Learn about Astad Dinshah Gorwala's life and work", icon: "fas fa-user"},
-                {title: "Publications", content: "Books and articles written by Gorwala", icon: "fas fa-book"},
-                {title: "Political Commentary", content: "Gorwala's views on Indian politics", icon: "fas fa-comments"},
-                {title: "Social Reforms", content: "Gorwala's contributions to social justice", icon: "fas fa-hands-helping"},
-                {title: "Journalism Career", content: "Gorwala's work at The Times of India and The Statesman", icon: "fas fa-newspaper"},
-                {title: "Legacy", content: "The lasting impact of Gorwala's work", icon: "fas fa-award"},
-                {title: "OPINION Journal December 1971", content: "Vol. XII No. 35 | 28th December 1971", icon: "fas fa-file-alt"},
-                {title: "The Queen of Beauty and Other Tales", content: "Published 1973 literary collection", icon: "fas fa-book-open"},
-                {title: "OPINION Journal October 1973", content: "Vol. XIV No. 27 | 30th October 1973", icon: "fas fa-file-alt"},
-                {title: "Report on Public Administration", content: "Published 1951 government report", icon: "fas fa-file-contract"},
-                {title: "The Role of the Administrator", content: "Published 1952 administrative guide", icon: "fas fa-file-signature"},
-                {title: "OPINION Journal September 1967", content: "Vol. VIII No. 21 | 26th September 1967", icon: "fas fa-file-alt"}
-            ];
-            
-            // Filter matching results
-            const matchingResults = searchContent.filter(item => 
-                item.title.toLowerCase().includes(searchTerm) || 
-                item.content.toLowerCase().includes(searchTerm)
-            );
-            
-            // Display results
-            if (matchingResults.length > 0) {
-                resultsList.innerHTML = '';
-                matchingResults.forEach(result => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <i class="${result.icon}"></i>
-                        <div>
-                            <div class="result-title">${result.title}</div>
-                            <div class="result-content">${result.content}</div>
-                        </div>
-                    `;
-                    resultsList.appendChild(li);
-                    
-                    // Add click handler to navigate to relevant section
-                    li.addEventListener('click', function() {
-                        document.getElementById('searchInput').value = result.title;
-                        resultsContainer.style.display = 'none';
-                        window.scrollTo({
-                            top: document.querySelector('.section-title').offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    });
-                });
-                resultsContainer.style.display = 'block';
+            // Apply sorting if any column was sorted
+            if (sortColumn !== null) {
+                sortTable(sortColumn);
             } else {
-                resultsList.innerHTML = '<li class="no-results">No results found for "' + searchTerm + '"</li>';
-                resultsContainer.style.display = 'block';
+                currentPage = 1;
+                generateTableRows(filteredData);
             }
         }
-        
-        // Close search results when clicking outside
-        document.addEventListener('click', function(e) {
-            const searchContainer = document.querySelector('.search-container');
-            if (!searchContainer.contains(e.target)) {
-                document.getElementById('searchResults').style.display = 'none';
+
+        // Function to sort table
+        function sortTable(columnIndex) {
+            // If clicking the same column, reverse direction
+            if (sortColumn === columnIndex) {
+                sortDirection = -sortDirection;
+            } else {
+                sortColumn = columnIndex;
+                sortDirection = 1;
             }
+            
+            filteredData.sort((a, b) => {
+                let valueA, valueB;
+                
+                switch (columnIndex) {
+                    case 0: valueA = a.volume; valueB = b.volume; break;
+                    case 1: valueA = a.issue; valueB = b.issue; break;
+                    case 2: valueA = a.year; valueB = b.year; break;
+                    case 3: 
+                        // Convert dates to comparable format
+                        const [dayA, monthA, yearA] = a.date.split('.').map(Number);
+                        const [dayB, monthB, yearB] = b.date.split('.').map(Number);
+                        valueA = new Date(yearA, monthA - 1, dayA);
+                        valueB = new Date(yearB, monthB - 1, dayB);
+                        break;
+                    case 4: valueA = a.article; valueB = b.article; break;
+                    case 5: valueA = a.author || ''; valueB = b.author || ''; break;
+                    case 6: valueA = a.pages; valueB = b.pages; break;
+                    default: return 0;
+                }
+                
+                if (valueA < valueB) return -1 * sortDirection;
+                if (valueA > valueB) return 1 * sortDirection;
+                return 0;
+            });
+            
+            currentPage = 1;
+            generateTableRows(filteredData);
+        }
+
+        // Initialize the table
+        document.addEventListener('DOMContentLoaded', () => {
+            generateTableRows(filteredData);
+            
+            // Add event listeners
+            document.getElementById('volumeFilter').addEventListener('change', applyFilters);
+            document.getElementById('yearFilter').addEventListener('change', applyFilters);
+            document.getElementById('authorFilter').addEventListener('change', applyFilters);
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    generateTableRows(filteredData);
+                }
+            });
+            
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                if (currentPage < Math.ceil(filteredData.length / rowsPerPage)) {
+                    currentPage++;
+                    generateTableRows(filteredData);
+                }
+            });
         });
         
         // Publication modal functions
@@ -1120,6 +1452,277 @@
             const modal = document.getElementById('publicationModal');
             if (event.target === modal) {
                 closePublicationModal();
+            }
+        });
+        
+        // API-based search functionality
+        const API_ENDPOINT = "https://api.gorwala.org/search";
+        let searchContent = [];
+        let originalElements = new Map();
+        let apiStatus = true; // Simulate API status
+        
+        // Build search index on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            buildSearchIndex();
+            checkAPIStatus();
+        });
+        
+        // Check API status (simulated)
+        function checkAPIStatus() {
+            // In a real implementation, this would ping the API
+            const statusIndicator = document.getElementById('apiStatus');
+            const statusText = document.getElementById('apiStatusText');
+            
+            // Simulate random status changes for demo
+            if (Math.random() > 0.2) {
+                statusIndicator.className = 'api-status-indicator api-status-online';
+                statusText.textContent = 'Online';
+                apiStatus = true;
+            } else {
+                statusIndicator.className = 'api-status-indicator api-status-offline';
+                statusText.textContent = 'Offline - using local search';
+                apiStatus = false;
+            }
+        }
+        
+        // Build comprehensive search index
+        function buildSearchIndex() {
+            searchContent = [];
+            
+            // Add all text content from the page
+            const contentElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, .profile-content, .bio-content, .pub-title, .pub-meta, .pub-description, .timeline-item, .quote');
+            
+            contentElements.forEach(element => {
+                // Store original HTML to restore later
+                originalElements.set(element, element.innerHTML);
+                
+                const text = element.textContent.trim();
+                if (text) {
+                    // Create a simplified version for search
+                    const title = element.tagName.startsWith('H') ? text : 
+                                 element.classList.contains('pub-title') ? text : 
+                                 element.classList.contains('section-title') ? text : 
+                                 element.tagName === 'P' ? text.substring(0, 50) + '...' : 
+                                 element.tagName === 'LI' ? text : 
+                                 element.classList.contains('timeline-year') ? `Timeline: ${text}` : 
+                                 element.classList.contains('quote') ? `Quote: ${text.substring(0, 30)}...` : 
+                                 text.substring(0, 70) + '...';
+                    
+                    searchContent.push({
+                        element: element,
+                        title: title,
+                        content: text,
+                        icon: getIconForElement(element)
+                    });
+                }
+            });
+            
+            // Build archive index
+            journalData.forEach(item => {
+                const content = `${item.article} ${item.author || ''} ${item.volume} ${item.issue} ${item.year}`;
+                const title = item.article;
+                
+                searchContent.push({
+                    type: 'archive',
+                    data: item,
+                    title: title,
+                    content: content,
+                    icon: 'fas fa-archive'
+                });
+            });
+        }
+        
+        // Get appropriate icon for element type
+        function getIconForElement(element) {
+            if (element.tagName.startsWith('H')) return 'fas fa-heading';
+            if (element.classList.contains('pub-title')) return 'fas fa-book';
+            if (element.classList.contains('section-title')) return 'fas fa-star';
+            if (element.classList.contains('timeline-item')) return 'fas fa-history';
+            if (element.classList.contains('quote')) return 'fas fa-quote-right';
+            return 'fas fa-paragraph';
+        }
+        
+        // Search functionality
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            performSearch();
+        });
+        
+        // Handle Enter key in search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Search functionality implementation
+        async function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            const resultsList = resultsContainer.querySelector('ul');
+            
+            // Clear previous highlights
+            clearHighlights();
+            
+            if (searchTerm === '') {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            // Show loading indicator
+            resultsList.innerHTML = '<li class="no-results"><div class="spinner"></div> Searching...</li>';
+            resultsContainer.style.display = 'block';
+            
+            // Show spinner
+            const spinner = resultsList.querySelector('.spinner');
+            spinner.style.display = 'inline-block';
+            
+            try {
+                let searchResults;
+                
+                if (apiStatus) {
+                    // Use API search
+                    searchResults = await searchWithAPI(searchTerm);
+                } else {
+                    // Use local search as fallback
+                    searchResults = searchLocally(searchTerm);
+                }
+                
+                // Display results
+                displaySearchResults(searchResults, searchTerm);
+            } catch (error) {
+                // If API fails, fall back to local search
+                console.error('API search failed:', error);
+                const localResults = searchLocally(searchTerm);
+                displaySearchResults(localResults, searchTerm);
+            } finally {
+                // Hide spinner
+                spinner.style.display = 'none';
+            }
+        }
+        
+        // Search using API
+        async function searchWithAPI(query) {
+            // Simulate API call with delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            // In a real implementation, you would use:
+            // const response = await fetch(`${API_ENDPOINT}?q=${encodeURIComponent(query)}`);
+            // const data = await response.json();
+            // return data.results;
+            
+            // Simulated API response
+            return searchContent.filter(item => 
+                item.content.toLowerCase().includes(query)
+            );
+        }
+        
+        // Search locally (fallback)
+        function searchLocally(query) {
+            return searchContent.filter(item => 
+                item.content.toLowerCase().includes(query)
+            );
+        }
+        
+        // Display search results
+        function displaySearchResults(results, searchTerm) {
+            const resultsContainer = document.getElementById('searchResults');
+            const resultsList = resultsContainer.querySelector('ul');
+            
+            // Highlight matches on the page
+            highlightMatches(searchTerm);
+            
+            if (results.length > 0) {
+                resultsList.innerHTML = '';
+                results.forEach(result => {
+                    const li = document.createElement('li');
+                    const contentSnippet = result.content.length > 60 ? 
+                        result.content.substring(0, 60) + '...' : 
+                        result.content;
+                    
+                    li.innerHTML = `
+                        <i class="${result.icon}"></i>
+                        <div>
+                            <div class="result-title">${result.title}</div>
+                            <div class="result-content">${contentSnippet}</div>
+                        </div>
+                    `;
+                    resultsList.appendChild(li);
+                    
+                    // Add click handler to navigate to relevant section
+                    li.addEventListener('click', function() {
+                        document.getElementById('searchInput').value = searchTerm;
+                        resultsContainer.style.display = 'none';
+                        
+                        if (result.type === 'archive') {
+                            // Set filters to show this archive item
+                            document.getElementById('volumeFilter').value = result.data.volume;
+                            document.getElementById('yearFilter').value = result.data.year;
+                            document.getElementById('authorFilter').value = result.data.author || '';
+                            
+                            // Apply filters
+                            applyFilters();
+                            
+                            // Scroll to the archive section
+                            document.querySelector('.archive-section').scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                        } else {
+                            // Scroll to the element
+                            result.element.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'center' 
+                            });
+                            
+                            // Highlight the element
+                            highlightElement(result.element, searchTerm);
+                        }
+                    });
+                });
+            } else {
+                resultsList.innerHTML = '<li class="no-results">No results found for "' + searchTerm + '"</li>';
+            }
+        }
+        
+        // Highlight matching text on the page
+        function highlightMatches(searchTerm) {
+            searchContent.forEach(item => {
+                if (!item.type && item.content.toLowerCase().includes(searchTerm)) {
+                    highlightElement(item.element, searchTerm);
+                }
+            });
+        }
+        
+        // Highlight text within an element
+        function highlightElement(element, searchTerm) {
+            const originalHTML = originalElements.get(element);
+            if (!originalHTML) return;
+            
+            // Create a regex to match the search term
+            const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+            
+            // Highlight matches
+            const newHTML = originalHTML.replace(regex, '<span class="search-match">$1</span>');
+            element.innerHTML = newHTML;
+        }
+        
+        // Clear all highlights
+        function clearHighlights() {
+            originalElements.forEach((html, element) => {
+                element.innerHTML = html;
+            });
+        }
+        
+        // Escape special regex characters
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchContainer = document.querySelector('.search-container');
+            if (!searchContainer.contains(e.target)) {
+                document.getElementById('searchResults').style.display = 'none';
             }
         });
     </script>
